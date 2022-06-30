@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.nav`
-  background-color: #383739;
+  background-color: #DB4D1A;
   height: 32px;
   padding: 4px 8px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
