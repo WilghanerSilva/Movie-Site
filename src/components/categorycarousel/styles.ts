@@ -10,11 +10,7 @@ export const CarouselContainer = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-behavior: smooth;
-<<<<<<< HEAD
   background-color: #1d1d1d;
-=======
-  background-color: rgba(2, 14, 56, 0.5);
->>>>>>> 7de7dcfb5e0d43ac543ab0a7301b762c2ebc0475
   border: 2px solid rgba(300, 300, 300, 0.5);
 `;
 
