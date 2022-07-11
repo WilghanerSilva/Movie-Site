@@ -6,7 +6,6 @@ type Props = {
 }
 
 export const MovieBanner = ({movie}: Props) => {
-  console.log(movie);
   return (
     <C.Container banner={movie !== undefined ? movie.backdrop_path : "dNjXm72V84kzKW3qniHzYrBVFoC.jpg"}>
       <C.MovieTitle>
