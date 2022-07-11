@@ -3,6 +3,7 @@ import * as C from './styles';
 import api from '../../utils/api-request';
 import { useEffect, useState } from 'react';
 import { Movie } from '../../types/movie';
+<<<<<<< HEAD
 import { Credits } from '../../types/credits';
 import Loading from '../../components/loading';
 import { Header } from '../../components/header';
@@ -26,12 +27,25 @@ const MoviePage = () => {
       api.get(`/${id}`, {params:{page:1}}).then(response => setMovie(response.data));
       api.get(`/${id}/credits`).then(response => setCredits(response.data))
   }, );
+=======
+import Loading from '../../components/loading';
+
+const MoviePage = () => {
+  const {id} = useParams();
+  
+  const [movie, setMovie] = useState<Movie>();
+
+  useEffect(()=>{
+      api.get(`/${id}`, {params:{page:1}}).then(response => setMovie(response.data));
+  }, []);
+>>>>>>> 7de7dcfb5e0d43ac543ab0a7301b762c2ebc0475
 
   console.log(movie);
   
   return(
     movie !== undefined ?
     <C.Container>
+<<<<<<< HEAD
       <Header/> 
       <C.Banner bannerPath={movie.backdrop_path} />
       <C.Content>
@@ -57,6 +71,20 @@ const MoviePage = () => {
        <C.Cast>
           
        </C.Cast>
+=======
+       <C.Banner bannerPath={movie.backdrop_path}>
+        <C.Poster src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}/>
+       </C.Banner>
+       <C.Content>
+        <C.InfoContainer>
+          <C.MovieTitle>{movie.title}</C.MovieTitle>
+          <C.MoviePlot>
+            <h3>Plot</h3>
+            <p>{movie.overview}</p>
+          </C.MoviePlot>
+        </C.InfoContainer>
+       </C.Content>
+>>>>>>> 7de7dcfb5e0d43ac543ab0a7301b762c2ebc0475
     </C.Container>
     :
     <Loading/>
