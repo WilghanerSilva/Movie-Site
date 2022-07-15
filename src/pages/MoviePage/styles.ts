@@ -7,6 +7,7 @@ interface props {
 export const Container = styled.div`
   color: #F7FFFF;
   overflow: hidden;
+  background: #000;
 `;
 
 export const Title = styled.h1`
@@ -56,9 +57,14 @@ export const InfoContainer = styled.div`
   border-top: 2px solid #31B305;
   border-bottom: 2px solid #31B305;
   display: grid;
-  grid-template-columns: 70px 400px;
+  grid-template-columns: 70px 700px;
   column-gap: 30px;
   row-gap: 10px;
  `;
 
- export const Cast = styled.div``;
+ export const Cast = styled.div`
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 80px;
+  `;

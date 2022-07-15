@@ -22,7 +22,7 @@ export const MoviePoster = ({movie}:Props) => {
   return (
     <Link to={`/movie/${movie.id}`}>
       <C.Container>
-        <C.Poster src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}/>
+        <C.Poster src={movie.poster_path !== null ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}` : '/missingMovie.png'}/>
         <C.Title>{sliceTitle(movie.title)}</C.Title>
       </C.Container>
     </Link>

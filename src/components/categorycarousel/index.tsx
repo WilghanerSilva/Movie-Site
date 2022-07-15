@@ -26,10 +26,10 @@ export const CategoryCarousel = ({movies, category}:Props) => {
     }
 
   return(
-    <C.GeneralContainer>
+    <C.Container>
       <C.TableTitle>{category}</C.TableTitle>
 
-        <C.Container>
+        <C.SubContainer>
           <C.NavButton onClick={(e) => handleToLeftClick(e)}>
             <AiOutlineArrowLeft/>
           </C.NavButton>
@@ -46,7 +46,7 @@ export const CategoryCarousel = ({movies, category}:Props) => {
           <AiOutlineArrowRight/>
         </C.NavButton>
 
-        </C.Container>
-    </C.GeneralContainer>
+        </C.SubContainer>
+    </C.Container>
   )
 }

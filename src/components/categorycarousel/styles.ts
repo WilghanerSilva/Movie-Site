@@ -10,16 +10,14 @@ export const CarouselContainer = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-behavior: smooth;
-  background-color: #1d1d1d;
-  border: 2px solid rgba(300, 300, 300, 0.5);
+  justify-content: space-between;
 `;
 
-export const Container = styled.div`
+export const SubContainer = styled.div`
   display: flex;
   flex-direction: row;
   color: #E1EFE6;
   align-items: stretch;
-  margin-bottom: 90px;
 `;
 
 export const TableTitle = styled.h2`
@@ -28,27 +26,19 @@ export const TableTitle = styled.h2`
 `;
 
 export const NavButton = styled.button`
-<<<<<<< HEAD
-  background-color: #31B305;
-=======
-  background-color: #DB4D1A;
->>>>>>> 7de7dcfb5e0d43ac543ab0a7301b762c2ebc0475
+  background-color:#00040A;
   border: none;
   border-radius: 5px;
   width: 60px;
   font-size: 48px;
   cursor: pointer;
   color: #E1EFE6;
-  &:hover{
-<<<<<<< HEAD
-    background-color: #103804;
-=======
-    background-color: #B74015
->>>>>>> 7de7dcfb5e0d43ac543ab0a7301b762c2ebc0475
-  }
 `;
 
-export const GeneralContainer = styled.div`
+export const Container = styled.div`
   width: 96%;
   margin: auto;
+  border-top: 1px solid rgba(233, 233, 255, 0.3);
+  border-bottom: 1px solid rgba(233, 233, 255, 0.3);
+  margin-top: 50px;
 `;

@@ -1,33 +1,31 @@
 import * as C from './styles';
 import { MovieBanner } from '../../components/moviebanner';
-import { Header } from '../../components/header';
 import { CategoryCarousel } from '../../components/categorycarousel';
 import { useEffect, useState } from 'react';
-import api from '../../utils/api-request';
+import {apiMovie} from '../../utils/api-request';
+import SearchBar from '../../components/searchbar';
 
 const Home = () => {
   const [topRatedMovies, setTopRated] = useState([]);
   const [popularMovies, setPopular] = useState([]);
   const [upcomingMovies, setUpcoming] = useState([]);
   useEffect(()=>{
-    api.get('/popular',{params:{page: 1}}).then(response => setPopular(response.data.results));
-    api.get('/top_rated',{params: {page: 1}}).then(response => setTopRated(response.data.results));
-    api.get('/upcoming',{params:{page:1}}).then(response => setUpcoming(response.data.results));
+    apiMovie.get('/popular',{params:{page: 1}}).then(response => setPopular(response.data.results));
+    apiMovie.get('/top_rated',{params: {page: 1}}).then(response => setTopRated(response.data.results));
+    apiMovie.get('/upcoming',{params:{page:1}}).then(response => setUpcoming(response.data.results));
   },[])
   
   return (
     <C.Container>
-      <Header/>
-      <MovieBanner movie={popularMovies[0]}/>
-
-      <C.divider/>
-
+      <MovieBanner movie={popularMovies[1]}/>
+    {
       <C.Body>
         <CategoryCarousel movies={popularMovies} category={"Popular"}/>
         <CategoryCarousel movies={topRatedMovies} category={"Top Rated"}/>
         <CategoryCarousel movies={upcomingMovies} category={"Up Coming"}/>
       </C.Body>
-
+    }
+ 
     </C.Container>
   );
 }

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 200px;
+  width: 144px;
+  margin-left: 20px;
+  margin-right: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +14,8 @@ export const Container = styled.div`
     cursor: pointer;
     z-index: 10;
   }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+  font-family: "Inter", sans-serif;
 `;
 
 export const Poster = styled.img`
@@ -21,10 +25,7 @@ export const Poster = styled.img`
 `;
 
 export const Title = styled.h3`
-  background: #383739;
   text-align: center;
-  border-radius: 5px;
-  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
   padding: 5px 10px;
   height: 60px;
   width: 120px;

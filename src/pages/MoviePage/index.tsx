@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 import * as C from './styles';
-import api from '../../utils/api-request';
+import {apiMovie} from '../../utils/api-request';
 import { useEffect, useState } from 'react';
 import { Movie } from '../../types/movie';
 import { Credits } from '../../types/credits';
 import Loading from '../../components/loading';
-import { Header } from '../../components/header';
+import { NavBar } from '../../components/navbar';
+import { ActorPost } from '../../components/actorposter';
 
 
 const MoviePage = () => {
@@ -23,16 +24,14 @@ const MoviePage = () => {
   const [credits, setCredits] = useState<Credits>();
 
   useEffect(()=>{
-      api.get(`/${id}`, {params:{page:1}}).then(response => setMovie(response.data));
-      api.get(`/${id}/credits`).then(response => setCredits(response.data))
-  }, );
+      apiMovie.get(`/${id}`, {params:{page:1}}).then(response => setMovie(response.data));
+      apiMovie.get(`/${id}/credits`).then(response => setCredits(response.data))
+  }, []);
 
-  console.log(movie);
-  
   return(
     movie !== undefined ?
     <C.Container>
-      <Header/> 
+      <NavBar/> 
       <C.Banner bannerPath={movie.backdrop_path} />
       <C.Content>
         <C.Poster src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}/>
@@ -53,10 +52,14 @@ const MoviePage = () => {
               <h3>Popularity</h3>
               <p>{movie.popularity.toString()}</p>
           </C.InfoContainer>
-       </C.Content>
        <C.Cast>
-          
+          {
+            credits?.cast.map(item =>(
+              <ActorPost actor={item} key={item.id}></ActorPost>
+            ))
+          }
        </C.Cast>
+       </C.Content>
     </C.Container>
     :
     <Loading/>

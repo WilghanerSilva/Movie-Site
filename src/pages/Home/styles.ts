@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   min-height: 100vh;
-  background-color: #000;
+  background-color: #00040A;
+  overflow: hidden;
 `;
 
 export const Body = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   align-content: space-between;
 `;
 
