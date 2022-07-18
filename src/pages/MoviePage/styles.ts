@@ -21,11 +21,14 @@ export const Banner = styled.div<props>`
   background-repeat: no-repeat;
   background-size: cover;
   height: 80vh;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
 ` 
 
 export const Poster = styled.img`
   width: 160px;
   margin-top: -225px;
+  z-index: 1;
 `;
 
 export const Content = styled.div`

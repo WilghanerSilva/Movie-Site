@@ -30,4 +30,5 @@ export const Title = styled.h3`
   height: 60px;
   width: 120px;
   overflow: hidden;
+  font-size: 0.8rem;
 `;

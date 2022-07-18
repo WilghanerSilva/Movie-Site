@@ -34,3 +34,21 @@ export const MoviePlot = styled.p`
   margin-bottom: 80px;
   width: 50%;
 `;
+
+export const SeeMoreButton = styled.button`
+  background-color: #E70C22;
+  border-radius: 20px;
+  width: 120px;
+  height: 30px;
+  border: none;
+  font-weight: 800;
+  color: #E9E9FF;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:hover{
+    cursor: pointer;
+    background-color: #AD0516;
+  }
+`

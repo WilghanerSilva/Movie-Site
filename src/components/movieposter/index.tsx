@@ -10,8 +10,8 @@ export const MoviePoster = ({movie}:Props) => {
   const sliceTitle = (title: string) => {
     let finalTitle: string;
     
-    if(title.length > 18){
-      finalTitle = title.slice(0, 15).concat("...");
+    if(title.length > 23){
+      finalTitle = title.slice(0, 23).concat("...");
     }else{
       finalTitle = title;
     }

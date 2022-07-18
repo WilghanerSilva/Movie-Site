@@ -6,6 +6,11 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 
+export const SearchContainer = styled.div`
+  padding-left: 25px;
+  padding-top: 50px;
+`;
+
 export const Body = styled.div`
   display: flex;
   flex-direction: column;

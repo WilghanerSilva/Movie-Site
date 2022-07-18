@@ -18,6 +18,9 @@ const Home = () => {
   return (
     <C.Container>
       <MovieBanner movie={popularMovies[1]}/>
+      <C.SearchContainer>
+        <SearchBar/>
+      </C.SearchContainer>
     {
       <C.Body>
         <CategoryCarousel movies={popularMovies} category={"Popular"}/>
