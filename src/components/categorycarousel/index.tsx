@@ -11,17 +11,16 @@ type Props = {
 
 export const CategoryCarousel = ({movies, category}:Props) => {
     const handleToLeftClick = (event: MouseEvent) => {
-      const container = event.currentTarget.parentElement;
-
-      if(container !== null){
-        const carousel = container.children[1];
-        carousel.scrollLeft -= 200;
+      if(event.currentTarget.parentElement !== null){
+        event.currentTarget.parentElement.children[1].scrollLeft -= 200;
+        console.log(event.currentTarget.parentElement.children[1].scrollLeft);
       }
     }
 
     const handleToRightClick = (event: MouseEvent) => {
       if(event.currentTarget.parentElement !== null){
         event.currentTarget.parentElement.children[1].scrollLeft += 200;
+        console.log(event.currentTarget.parentElement.children[1].scrollLeft);
       }
     }
 
