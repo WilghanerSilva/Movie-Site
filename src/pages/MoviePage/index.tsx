@@ -5,61 +5,59 @@ import { useEffect, useState } from 'react';
 import { Movie } from '../../types/movie';
 import { Credits } from '../../types/credits';
 import Loading from '../../components/loading';
-import { NavBar } from '../../components/navbar';
 import { ActorPost } from '../../components/actorposter';
+import { CategoryCarousel } from '../../components/categorycarousel';
 
 
 const MoviePage = () => {
-  const convertHour = (value: Number) => {
-    let hours = value.valueOf() / 60;
-    let rhours = Math.floor(hours);
-    let minutes = (hours - rhours) * 60;
-    minutes = Math.round(minutes);
-    return `${rhours}h ${minutes}m`
-  }
-  
   const {id} = useParams();
   
   const [movie, setMovie] = useState<Movie>();
   const [credits, setCredits] = useState<Credits>();
+  const [similarMovies, setSimilarMovies] = useState<Movie[]>();
 
   useEffect(()=>{
-      apiMovie.get(`/${id}`, {params:{page:1}}).then(response => setMovie(response.data));
-      apiMovie.get(`/${id}/credits`).then(response => setCredits(response.data))
-  }, []);
+      apiMovie.get(`/${id}`, {params:{page:1}}).then(response => {setMovie(response.data); console.log(response.data)});
+      apiMovie.get(`/${id}/credits`).then(response =>{ setCredits(response.data); console.table(response.data)});
+      apiMovie.get(`/${id}/recommendations`).then(response => {setSimilarMovies(response.data.results)})
+    },[]);
 
   return(
-    movie !== undefined ?
+    movie !== undefined && similarMovies !== undefined ?
     <C.Container>
-      <NavBar/> 
-      <C.Banner bannerPath={movie.backdrop_path} />
-      <C.Content>
-        <C.Poster src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}/>
-          <C.MovieTitle>{movie.title}</C.MovieTitle>
+      <C.Banner bannerPath={movie.backdrop_path}/>
+      <C.ContentContainer>
+        <C.Content>
+          <C.Poster src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}/>
           <C.InfoContainer>
-              <h3>Plot</h3>
-              <p>{movie.overview}</p>
-              
-              <h3>Budget</h3>
-              <p>{movie.budget.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD'
-              })}</p>
+            <C.MovieTitle>{movie.title}</C.MovieTitle>
+            
+            <C.Title>Plot</C.Title>
+            <C.Text>{movie.overview}</C.Text>
+            
+            <C.Title>Genres</C.Title>
+            <C.GenresList>
+              {movie.genres.map((item, key) => (<li key={key}>{item.name}</li>))}
+            </C.GenresList>
 
-              <h3>Run Time</h3>
-              <p>{convertHour(movie.runtime)}</p>
+            <C.Title>IMDB Rating</C.Title>
+            <C.VoteContainer>
+              <C.ProgressBar progress={movie.vote_average*10}/>
+              <C.Text>{movie.vote_average}</C.Text>
+            </C.VoteContainer>
 
-              <h3>Popularity</h3>
-              <p>{movie.popularity.toString()}</p>
+            <C.Title>Director</C.Title>
+            <C.Text>{credits?.crew.map(item => item.job === "Director" ? item.name : "")}</C.Text>
           </C.InfoContainer>
-       <C.Cast>
-          {
-            credits?.cast.map(item =>(
-              <ActorPost actor={item} key={item.id}></ActorPost>
-            ))
-          }
-       </C.Cast>
-       </C.Content>
+        </C.Content>
+      </C.ContentContainer>
+      <C.Label>Actors</C.Label>
+      <C.Cast>
+        {
+          credits?.cast.map(item => <ActorPost actor={item} key={item.id}/>)
+        }
+      </C.Cast>
+      <CategoryCarousel movies={similarMovies} category="Similar Movies"/>
     </C.Container>
     :
     <Loading/>
