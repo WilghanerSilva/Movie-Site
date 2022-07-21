@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.nav`
-  background-color: #31B305;
-  width: calc(100% - 20px);
-  height: 32px;
-  padding: 4px 8px;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  width: cal(100vw - 20px);
+  background: rgba(231, 12, 34, 1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 5;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 5px 10px;
+  color: #E9E9FF;
 `;
 
 export const Logo = styled.div`

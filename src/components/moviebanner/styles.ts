@@ -12,6 +12,7 @@ export const Container = styled.div<Props>`
   background:linear-gradient(180deg, rgba(9,9,9,0.92) 9%, rgba(9,9,9,0.74) 26%, rgba(9,9,9,0.40518205573244925) 51%, rgba(9,9,9,0.72) 78%, rgba(9,9,9,0.94) 94%), url(${props => props.banner !== undefined ? `https://image.tmdb.org/t/p/w1280/${props.banner}` : "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg"});
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   color: #E9E9FF;
   display: flex;
   flex-direction: column;
@@ -25,6 +26,12 @@ export const MovieTitle = styled.h1`
   margin-left: 50px;
   width: 50%;
   font-weight: 800;
+
+  @media(max-width: 533px){
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const MoviePlot = styled.p`
@@ -33,6 +40,12 @@ export const MoviePlot = styled.p`
   margin-top: -20px;
   margin-bottom: 80px;
   width: 50%;
+
+  @media(max-width: 533px){
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const SeeMoreButton = styled.button`

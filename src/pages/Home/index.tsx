@@ -4,6 +4,7 @@ import { CategoryCarousel } from '../../components/categorycarousel';
 import { useEffect, useState } from 'react';
 import {apiMovie} from '../../utils/api-request';
 import SearchBar from '../../components/searchbar';
+import { NavBar } from '../../components/navbar';
 
 const Home = () => {
   const [topRatedMovies, setTopRated] = useState([]);
@@ -17,6 +18,7 @@ const Home = () => {
   
   return (
     <C.Container>
+      <NavBar/>
       <MovieBanner movie={popularMovies[1]}/>
       <C.SearchContainer>
         <SearchBar/>

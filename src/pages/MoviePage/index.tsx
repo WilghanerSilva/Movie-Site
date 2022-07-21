@@ -7,6 +7,7 @@ import { Credits } from '../../types/credits';
 import Loading from '../../components/loading';
 import { ActorPost } from '../../components/actorposter';
 import { CategoryCarousel } from '../../components/categorycarousel';
+import { NavBar } from '../../components/navbar';
 
 
 const MoviePage = () => {
@@ -25,6 +26,7 @@ const MoviePage = () => {
   return(
     movie !== undefined && similarMovies !== undefined ?
     <C.Container>
+      <NavBar/>
       <C.Banner bannerPath={movie.backdrop_path}/>
       <C.ContentContainer>
         <C.Content>

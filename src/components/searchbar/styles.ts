@@ -8,6 +8,13 @@ export const Container = styled.div`
   position: relative;
   background: #fff;
   padding: 0;
+
+  @media(max-width: 533px) {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
 `;
 
 export const Input = styled.input`

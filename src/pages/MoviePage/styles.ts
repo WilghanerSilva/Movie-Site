@@ -10,8 +10,9 @@ interface ProgressBarProps {
 
 export const Container = styled.div`
   color: #F7FFFF;
-  background: #000;
+  background: #00040A;
   overflow: hidden;
+  width: 100vw;
 `;
 
 
@@ -21,6 +22,7 @@ export const Banner = styled.div<BannerProps>`
   background: linear-gradient(180deg, rgba(57, 54, 54, 0.4) 8.18%, rgba(0, 0, 0, 0.55) 100%),url(${props => `https://image.tmdb.org/t/p/w1280/${props.bannerPath}`}) ;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   height: 100vh;
   -webkit-filter: blur(5px);
 ` 
@@ -28,8 +30,10 @@ export const ContentContainer = styled.div`
   position: absolute;
   left: 0;
   top: 0;
+  padding-top: 25px;
   z-index: 1;
-  height: 100vh;
+  height: calc(100vh - 25px);
+  width: 100vw;
   display: flex;
 `;
 
@@ -40,11 +44,19 @@ export const Content = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
+
+  @media(max-width: 533px){
+    flex-direction: column;
+    height: 90%;
+  }
 `;
 
 export const Poster = styled.img`
   height: 100%;
-  box-shadow: 2px 8px 19px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 8px 19px 12px rgba(0, 0, 0, 0.8);
+  @media(max-width: 553px){
+    display: none;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -55,6 +67,10 @@ export const InfoContainer = styled.div`
   flex-grow: 4;
   padding-left: 60px;
   color: #E9E9FF;
+
+  @media(max-width: 553px){
+    max-height: 100%;
+  }
  `;
 
 export const MovieTitle = styled.h1`
@@ -120,4 +136,8 @@ export const Cast = styled.div`
   justify-items: center;
   row-gap: 25px;
   margin-bottom: 0;
+
+  @media(max-width: 553px){
+    grid-template-columns: 1fr;
+  }
 `;
