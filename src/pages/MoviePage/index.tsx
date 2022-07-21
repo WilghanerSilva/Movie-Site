@@ -18,10 +18,10 @@ const MoviePage = () => {
   const [similarMovies, setSimilarMovies] = useState<Movie[]>();
 
   useEffect(()=>{
-      apiMovie.get(`/${id}`, {params:{page:1}}).then(response => {setMovie(response.data); console.log(response.data)});
-      apiMovie.get(`/${id}/credits`).then(response =>{ setCredits(response.data); console.table(response.data)});
+      apiMovie.get(`/${id}`, {params:{page:1}}).then(response => {setMovie(response.data);});
+      apiMovie.get(`/${id}/credits`).then(response =>{ setCredits(response.data);});
       apiMovie.get(`/${id}/recommendations`).then(response => {setSimilarMovies(response.data.results)})
-    },[]);
+    },[id]);
 
   return(
     movie !== undefined && similarMovies !== undefined ?
