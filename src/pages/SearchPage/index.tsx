@@ -1,5 +1,5 @@
-import { useEffect, useState, MouseEvent } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { MoviePoster } from "../../components/movieposter";
 import { NavBar } from "../../components/navbar";
 import SearchBar from "../../components/searchbar";
@@ -10,23 +10,15 @@ import * as C from "./styles";
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
   const [results, setResults] = useState<Movie[]>([]);
-  const [pages, setPages] = useState<Number>(0);
-  const navigate = useNavigate();
 
   useEffect(()=>{
     
     apiSearch.get('/movie', {params:{page: searchParams.get('page'), query: searchParams.get('query'), include_adulte: false}})
     .then(response => {
       setResults(response.data.results);
-      setPages(response.data.total_pages);
     })
   }, [searchParams]);
 
-  const handleClickButton = (e: MouseEvent<HTMLButtonElement>) => {
-    const value = e.currentTarget.value;
-    navigate(`/search?query=${searchParams.get('query')}&page=${value}`);
-    window.location.reload();
-  }
 
   return (
     <C.Container>
