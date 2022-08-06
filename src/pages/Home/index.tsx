@@ -10,12 +10,15 @@ const Home = () => {
   const [topRatedMovies, setTopRated] = useState([]);
   const [popularMovies, setPopular] = useState([]);
   const [upcomingMovies, setUpcoming] = useState([]);
+  
   useEffect(()=>{
     apiMovie.get('/popular',{params:{page: 1}}).then(response => setPopular(response.data.results));
     apiMovie.get('/top_rated',{params: {page: 1}}).then(response => setTopRated(response.data.results));
     apiMovie.get('/upcoming',{params:{page:1}}).then(response => setUpcoming(response.data.results));
   },[])
   
+  console.log(topRatedMovies);
+
   return (
     <C.Container>
       <NavBar/>

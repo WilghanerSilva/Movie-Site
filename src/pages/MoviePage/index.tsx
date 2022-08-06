@@ -20,16 +20,17 @@ const MoviePage = () => {
   useEffect(()=>{
       apiMovie.get(`/${id}`, {params:{page:1}}).then(response => {setMovie(response.data);});
       apiMovie.get(`/${id}/credits`).then(response =>{ setCredits(response.data);});
-      apiMovie.get(`/${id}/recommendations`).then(response => {setSimilarMovies(response.data.results)})
+      apiMovie.get(`/${id}/similar`).then(response => {setSimilarMovies(response.data.results)})
     },[id]);
 
   return(
     movie !== undefined && similarMovies !== undefined ?
     <C.Container>
       <NavBar/>
+
       <C.Banner bannerPath={movie.backdrop_path}/>
+
       <C.ContentContainer>
-        <C.Content>
           <C.Poster src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}/>
           <C.InfoContainer>
             <C.MovieTitle>{movie.title}</C.MovieTitle>
@@ -51,8 +52,8 @@ const MoviePage = () => {
             <C.Title>Director</C.Title>
             <C.Text>{credits?.crew.map(item => item.job === "Director" ? item.name : "")}</C.Text>
           </C.InfoContainer>
-        </C.Content>
       </C.ContentContainer>
+
       <C.Label>Actors</C.Label>
       <C.Cast>
         {

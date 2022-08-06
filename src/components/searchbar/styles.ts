@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 500px;
-  height: 30px;
+  width: 550px;
+  height: 40px;
   display: flex;
   justify-content: center;
   position: relative;
@@ -18,14 +18,16 @@ export const Container = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 100%;
+  width: 90%;
   height: 90%;
   border: none;
   outline: none;
+  padding: 0px 25px;
+  font-size: 1.2rem;
 `;
 
 export const Button = styled.button`
-width: 30px;
+width: 10%;
 height: 100%;
 border: none;
 `;

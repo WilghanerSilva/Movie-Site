@@ -11,8 +11,7 @@ interface ProgressBarProps {
 export const Container = styled.div`
   color: #F7FFFF;
   background: #00040A;
-  overflow: hidden;
-  width: 100vw;
+  max-width: 100vw;
 `;
 
 
@@ -30,29 +29,21 @@ export const ContentContainer = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  padding-top: 25px;
+  padding: 80px 60px 80px 60px;
   z-index: 1;
-  height: calc(100vh - 25px);
-  width: 100vw;
+  height: calc(100vh - 80px);
+  width: calc(100vw - 120px);
   display: flex;
-`;
 
-export const Content = styled.div`
-  height: 70%;
-  width: 90%;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-
-  @media(max-width: 533px){
-    flex-direction: column;
-    height: 90%;
+  @media(max-width: 553px){
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
   }
 `;
 
 export const Poster = styled.img`
-  height: 100%;
+  height: 90%;
   box-shadow: 2px 8px 19px 12px rgba(0, 0, 0, 0.8);
   @media(max-width: 553px){
     display: none;
@@ -63,13 +54,18 @@ export const InfoContainer = styled.div`
   background: rgba(217, 217, 217, 0.05);
   border: solid 1px rgba(217, 217, 217, 0.45);
   border-radius: 5px;
-  height: 100%;
-  flex-grow: 4;
+  height: 90%;
+  max-width: 80%;
   padding-left: 60px;
   color: #E9E9FF;
 
   @media(max-width: 553px){
     max-height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
   }
  `;
 
@@ -117,9 +113,10 @@ export const ProgressBar = styled.div<ProgressBarProps>`
 `;
 
 export const VoteContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5px;
+  width: 30%;
   margin-bottom: -20px;
 `
 export const Label = styled.h1`

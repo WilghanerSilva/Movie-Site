@@ -19,8 +19,9 @@ export const Container = styled.div`
 `;
 
 export const Poster = styled.img`
-  height: 200px;
-  width: 144px;
+  height: 100%;
+  max-width: 144px;
+  min-width: 100px
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
 `;
 

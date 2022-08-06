@@ -23,7 +23,11 @@ const SearchPage = () => {
   return (
     <C.Container>
       <NavBar/>
-      <SearchBar/>
+
+      <C.searchBarContainer>
+        <SearchBar/>
+      </C.searchBarContainer>
+      
       <C.resultsContainer>
         {results.map(item => (
           <MoviePoster movie={item}/>
