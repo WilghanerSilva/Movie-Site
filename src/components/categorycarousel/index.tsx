@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as C from './styles';
 import { MoviePoster } from "../movieposter";
 import {MouseEvent, useEffect, useState} from 'react';
