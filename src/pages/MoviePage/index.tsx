@@ -15,16 +15,14 @@ const MoviePage = () => {
   
   const [movie, setMovie] = useState<Movie>();
   const [credits, setCredits] = useState<Credits>();
-  const [similarMovies, setSimilarMovies] = useState<Movie[]>();
 
   useEffect(()=>{
       apiMovie.get(`/${id}`, {params:{page:1}}).then(response => {setMovie(response.data);});
       apiMovie.get(`/${id}/credits`).then(response =>{ setCredits(response.data);});
-      apiMovie.get(`/${id}/similar`).then(response => {setSimilarMovies(response.data.results)})
     },[id]);
 
   return(
-    movie !== undefined && similarMovies !== undefined ?
+    movie !== undefined ?
     <C.Container>
       <NavBar/>
 
@@ -60,7 +58,7 @@ const MoviePage = () => {
           credits?.cast.map(item => <ActorPost actor={item} key={item.id}/>)
         }
       </C.Cast>
-      <CategoryCarousel movies={similarMovies} category="Similar Movies"/>
+      <CategoryCarousel url={`/${id}/similar`} category="Similar Movies"/>
     </C.Container>
     :
     <Loading/>

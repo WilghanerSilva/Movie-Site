@@ -17,7 +17,9 @@ export const resultsContainer = styled.div`
   padding: 25px;
   margin-top: 100px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  justify-content: center;
+  justify-items: center;
   column-gap: 60px;
   row-gap: 5px;
   margin-left: auto;
@@ -26,7 +28,7 @@ export const resultsContainer = styled.div`
   @media(max-width: 553px){
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 `

@@ -42,3 +42,7 @@ export const Container = styled.div`
   border-bottom: 1px solid rgba(233, 233, 255, 0.3);
   margin-top: 50px;
 `;
+
+export const finalItem = styled.div`
+  background: gray;
+`

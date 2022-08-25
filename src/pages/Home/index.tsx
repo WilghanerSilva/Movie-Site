@@ -7,17 +7,11 @@ import SearchBar from '../../components/searchbar';
 import { NavBar } from '../../components/navbar';
 
 const Home = () => {
-  const [topRatedMovies, setTopRated] = useState([]);
-  const [popularMovies, setPopular] = useState([]);
-  const [upcomingMovies, setUpcoming] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
   
   useEffect(()=>{
-    apiMovie.get('/popular',{params:{page: 1}}).then(response => setPopular(response.data.results));
-    apiMovie.get('/top_rated',{params: {page: 1}}).then(response => setTopRated(response.data.results));
-    apiMovie.get('/upcoming',{params:{page:1}}).then(response => setUpcoming(response.data.results));
+    apiMovie.get('/popular',{params: {page: 1}}).then(response => setPopularMovies(response.data.results));
   },[])
-  
-  console.log(topRatedMovies);
 
   return (
     <C.Container>
@@ -28,9 +22,9 @@ const Home = () => {
       </C.SearchContainer>
     {
       <C.Body>
-        <CategoryCarousel movies={popularMovies} category={"Popular"}/>
-        <CategoryCarousel movies={topRatedMovies} category={"Top Rated"}/>
-        <CategoryCarousel movies={upcomingMovies} category={"Up Coming"}/>
+        <CategoryCarousel url='/popular' category='Popular'/>
+        <CategoryCarousel url='/top_rated' category='Top Rated'/>
+        <CategoryCarousel url='/upcoming' category='Up Coming'/>
       </C.Body>
     }
  
